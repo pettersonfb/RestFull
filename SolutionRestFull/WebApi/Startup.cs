@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApi.Services;
+using WebApi.Services.Implementations;
 
 namespace WebApi
 {
@@ -28,6 +30,10 @@ namespace WebApi
         {
 
             services.AddControllers();
+
+            //Injecao de dependencia
+            services.AddScoped<IPersonService, PersonServiceImplementation>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
